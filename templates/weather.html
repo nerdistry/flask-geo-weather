@@ -5,8 +5,15 @@
     <title>Weather Information</title>
 </head>
 <body>
-    <h1>Weather Information for {{ weather_data.name }}</h1>
-    <p>Temperature: {{ weather_data.main.temp }}&#8451;</p>
-    <p>Weather: {{ weather_data.weather[0].description }}</p>
+     <h1>Weather Information for {{ weather_data.location.name }}</h1>
+    <p>Local Time: {{ weather_data.location.localtime }}</p>
+    <p>Temperature: {{ weather_data.current.temp_c }}&#8451; (Feels Like: {{ weather_data.current.feelslike_c }}&#8451;)</p>
+    <p>Weather: {{ weather_data.current.condition.text }} <img src="{{ weather_data.current.condition.icon }}" alt="Weather Icon"></p>
+    <p>Wind: {{ weather_data.current.wind_kph }} kph, Direction: {{ weather_data.current.wind_dir }}</p>
+    <p>Pressure: {{ weather_data.current.pressure_mb }} mb</p>
+    <p>Humidity: {{ weather_data.current.humidity }}%</p>
+    <p>Cloud Coverage: {{ weather_data.current.cloud }}%</p>
+    <p>Visibility: {{ weather_data.current.vis_km }} km</p>
+    <p>UV Index: {{ weather_data.current.uv }}</p>
 </body>
 </html>

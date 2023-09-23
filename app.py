@@ -27,13 +27,14 @@ def index():
     lat = location_data.get('lat')
     lon = location_data.get('lon')
 
-    weather_url = f'http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={OPENWEATHER_API_KEY}&units=metric'
+    weather_url = f'http://api.weatherapi.com/v1/current.json?key={OPENWEATHER_API_KEY}&q={lat},{lon}'
     response = requests.get(weather_url)
 
     if response.status_code != 200:
         return 'Could not get weather information.'
 
     weather_data = response.json()
+    print(weather_data)  # Print out the data to understand the structure
     return render_template('weather.html', weather_data=weather_data)
 
 
