@@ -8,7 +8,7 @@ load_dotenv()
 
 # Flask setup
 app = Flask(__name__)
-app.secret_key = 'AgriSense'  # Change this to a random secret key
+app.secret_key = os.getenv('APPSECRET_KEY')
 
 # OpenWeatherMap API Key
 OPENWEATHER_API_KEY = os.getenv('OPENWEATHER_API_KEY')
