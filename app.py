@@ -1,5 +1,7 @@
 import requests
 
-reponse = requests.get("http://ip-api.com/json/24.48.0.1")
+response = requests.get("http://ip-api.com/json/24.48.0.1").json()
 
-print(reponse.content)
+
+print(response['lat'])
+print(response['lon'])
