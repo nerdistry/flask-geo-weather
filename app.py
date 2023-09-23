@@ -1,11 +1,5 @@
-from flask import Flask, session, render_template, request, redirect, url_for
+import requests
 
-app = Flask(__name__)
-app.secret_key = 'your-secret-key'
+reponse = requests.get("http://ip-api.com/json/24.48.0.1")
 
-@app.route('/')
-def index():
-    return 'Hello, World!'
-
-if __name__ == '__main__':
-    app.run(debug=True)
+print(reponse.content)
