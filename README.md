@@ -1,5 +1,4 @@
 # flask-geo-weather
-# My Project
 
 This document provides the necessary steps to set up the project.
 
