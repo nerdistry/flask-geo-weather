@@ -1,5 +1,12 @@
-from flask import Flask, session, render_template, redirect, url_for
+from flask import Flask, session, render_template, redirect, url_for, Markup
+import openai
 import os
+import io
+import base64
+import matplotlib.pyplot as plt
+from PIL import Image
+from base64 import b64decode
+from io import BytesIO
 import requests
 from dotenv import load_dotenv
 
