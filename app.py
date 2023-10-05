@@ -27,6 +27,7 @@ def index():
     lat = location_data.get('lat')
     lon = location_data.get('lon')
 
+#fetching weather data.
     weather_url = f'http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={OPENWEATHER_API_KEY}&units=metric'
     response = requests.get(weather_url)
 
@@ -35,8 +36,21 @@ def index():
 
     weather_data = response.json()
     print(weather_data)  # Print out the data to understand the structure
-    return render_template('weather.html', weather_data=weather_data)
 
+  #fetching soil data.
+    AMBEEDATA_API_KEY=os.getenv('AMBEEDATA_API_KEY')
+    soil_url = f'https://api.ambeedata.com/latest/by-lat-lng?lat={lat}&lng={lon}'
+    headers = {"x-api-key": AMBEEDATA_API_KEY}
+    response = requests.get(soil_url, headers=headers)
+    print("Soil API Response: ", response.text)  # Add this line to print the response.
+
+    if response.status_code != 200:
+        return 'Could not get soil information.'
+    else:
+        soil_data = response.json()
+        print(soil_data )
+
+    return render_template('display.html', weather_data=weather_data, soil_data=soil_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
